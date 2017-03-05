@@ -4,6 +4,7 @@
 #include <QGridLayout>
 #include <QMessageBox>
 #include "Client.h"
+#include <QThread>
 
 ProblemWidget::ProblemWidget(QWidget *parent)
     : QWidget(parent)
@@ -24,8 +25,11 @@ void ProblemWidget::_init()
 {
     m_UI = new Ui_Form();
     m_UI->setupUi(this);
-    m_UI->textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);//设置垂直滚动条不可见
-    m_UI->textEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);//设置水平滚动条不可见
+    //设置垂直滚动条不可见
+    m_UI->textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //设置水平滚动条不可见
+    m_UI->textEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     indexToLabel.insert(1, m_UI->label_1);
     indexToLabel.insert(2, m_UI->label_2);
     indexToLabel.insert(3, m_UI->label_3);
@@ -50,10 +54,10 @@ void ProblemWidget::_init()
 
     m_UI->labelRunTime->setText(QString::number(0));
     timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(slotTimerUpDate()));//关联定时器计满信号和相应的槽函数
-       //每隔1ms执行xytimerUpDate()函数
+    // 关联定时器计满信号和相应的槽函数
+    connect(timer,SIGNAL(timeout()),this,SLOT(slotTimerUpDate()));
+    // 每隔1ms执行xytimerUpDate()函数
     timer->setInterval(1000);
-    timer->start();
 }
 
 void ProblemWidget::setData(const Problem &p)
@@ -116,6 +120,7 @@ void ProblemWidget::slotClickedCommit()
 {
     timer->stop();
     emit signalCommit(m_UI->labelScore->text().toInt());
+    m_UI->pushButtonCommit->setEnabled(false);
     QMessageBox box(this);
     box.setWindowTitle(QStringLiteral("提示："));
     box.setText(QStringLiteral("系统已经接受您的提交，请等待本局对抗结束!"));
@@ -174,7 +179,6 @@ void ProblemWidget::vaildAnswer()
 
     //int returnAnswer = CTYDb::getInstance()->getAnswerByIndex(m_UI->labelIndex->text().toInt());
     int returnAnswer = m_ListProblem.at(m_CurrentIndex).indexAnswer;
-    qDebug() << answer <<  "   &&&" << returnAnswer;
     if(answer == returnAnswer)
     {
         updateLabel(m_CurrentIndex + 1, LabelColor::Green);
@@ -203,5 +207,13 @@ void ProblemWidget::setProblems(ListProblem Problems)
         qDebug() << "!!!!!!" << p.indexAnswer;
     }
     m_CurrentIndex = 0;
+    if(timer->isActive())
+    {
+        m_UI->labelRunTime->setText("0");
+        timer->stop();
+    }
+    m_UI->pushButtonCommit->setEnabled(true);
+    m_UI->pushButtonNext->setEnabled(true);
+    timer->start();
     setData(m_ListProblem.at(m_CurrentIndex));
 }

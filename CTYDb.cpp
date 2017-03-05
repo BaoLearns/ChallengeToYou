@@ -239,7 +239,7 @@ bool CTYDb::MatchOpponent(const QString &username)
             sql = QString("insert into Result values(%0,\"%1\",\"%2\",%3,%4,\"%5\",\"%6\",\"%7\")")
                     .arg(size).arg(firstUser).arg(secondUser).arg(0).arg(0).arg("contesting")
                     .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd"))
-                    .arg(QDateTime::currentDateTime().toString("hh:mm::ss::zzz"));
+                    .arg(QDateTime::currentDateTime().toString("hh:mm:ss.zzz"));
 
             qDebug() << sql;
             if(!query.exec(sql))
@@ -251,7 +251,7 @@ bool CTYDb::MatchOpponent(const QString &username)
             qDebug() << "!!!" << firstUser << "    " << secondUser;
             MatchPairs.push_back(MatchPair(size, firstUser, secondUser, 0, 0,getNumProblem()));
 
-            emit signalMatchSuccess(firstUser);
+            //emit signalMatchSuccess(firstUser);
             emit signalMatchSuccess(secondUser);
             return true;
         }
@@ -325,6 +325,9 @@ bool CTYDb::commitByUser(const QString &username, const int score)
 
         if(userScoreMap.value(first, -1) != -1 && userScoreMap.value(second, -1) != -1)
         {
+            MatchPairs[i].first_score = userScoreMap.value(first);
+            MatchPairs[i].second_score = userScoreMap.value(second);
+
             QSqlQuery query;
             QString sql = QString("update Result set First_user_score=%0,Second_user_score=%1,Status=\"%2\" where Id=%3")
                     .arg(userScoreMap.value(first)).arg(userScoreMap.value(second)).arg("done")

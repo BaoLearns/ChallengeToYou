@@ -25,23 +25,24 @@ UserWidget::UserWidget(const QString &username, QWidget *parent)
     _init();
 }
 
+UserWidget::~UserWidget()
+{
+    delete m_UI;
+}
+
 void UserWidget::_init()
 {
+    m_UI = new Ui_UserForm();
+    m_UI->setupUi(this);
+
     setFixedSize(300, 800);
-    QLabel *label = new QLabel(QStringLiteral("欢迎，") + strUserName);
-    QLabel *labelScore = new QLabel(QStringLiteral("你的总积分是：")
-                                    + QString::number(CTYDb::getInstance()->getScoreByUser(strUserName)));
-    btnStart = new QPushButton("挑战");
-    labelStatus = new QLabel(QStringLiteral(""));
-    QVBoxLayout *layoutMain = new QVBoxLayout();
-    layoutMain->addWidget(label);
-    layoutMain->addWidget(labelScore);
-    layoutMain->addWidget(btnStart);
-    layoutMain->addWidget(labelStatus);
+    m_UI->label->setText(QStringLiteral("欢迎您，") + strUserName);
+    m_UI->labelTotalScore->setText(QStringLiteral("你的总积分是：")
+                                        + QString::number(CTYDb::getInstance()->getScoreByUser(strUserName)));
 
-    setLayout(layoutMain);
-
-    connect(btnStart, SIGNAL(clicked()), this, SLOT(slotClickedStart()));
+    isContesting = false;
+    connect(m_UI->pushButtonStartOrCancle, SIGNAL(clicked()), this, SLOT(slotClickedStart()));
+    connect(m_UI->pushButtonLogout, SIGNAL(clicked()), this, SLOT(slotLogout()));
 //    connect(btnStart, SIGNAL(clicked()), this, SIGNAL(signalRequestStart()));
 
     connect(CTYDb::getInstance(), SIGNAL(signalMatchSuccess(const QString&)),
@@ -52,9 +53,9 @@ void UserWidget::_init()
 
 void UserWidget::slotClickedStart()
 {
-    labelStatus->setText(QStringLiteral("正在匹配对手...."));
+    appendMessage(QStringLiteral("正在匹配对手...."));
 
-    labelStatus->update();
+    m_UI->pushButtonStartOrCancle->setEnabled(false);
     //CTYThread *thread = new CTYThread(strUserName);
 
 
@@ -78,19 +79,21 @@ void UserWidget::slotMatchSuccess(const QString &)
 {
     if(!CTYDb::getInstance()->isAlreadyMatch(strUserName))
     {
-      labelStatus->setText(QStringLiteral("没有合适的对手！"));
+      appendMessage(QStringLiteral("没有合适的对手！"));
       return;
     }
     else
     {
+        m_UI->pushButtonStartOrCancle->setEnabled(false);
         MatchPair pair = CTYDb::getInstance()->getMatchPair(strUserName);
         if(pair.first == strUserName)
         {
-            labelStatus->setText(QStringLiteral("匹配到对手:") + pair.second);
+            appendMessage(QStringLiteral("匹配到对手:") + pair.second);
+
         }
         else
         {
-            labelStatus->setText(QStringLiteral("匹配到对手:") + pair.first);
+            appendMessage(QStringLiteral("匹配到对手:") + pair.first);
         }
     }
     //btnStart->setHidden(true);
@@ -104,8 +107,6 @@ void UserWidget::slotMatchFail(const QString &)
 
 void UserWidget::setLabelStatus(const QString &message, bool isHidden)
 {
-    labelStatus->setText(message);
-    labelStatus->setHidden(isHidden);
 }
 
 void UserWidget::setUserName(const QString &username)
@@ -117,4 +118,28 @@ void UserWidget::setUserName(const QString &username)
 QString UserWidget::getUserName() const
 {
     return strUserName;
+}
+
+void UserWidget::slotLogout()
+{
+    CTYDb::getInstance()->updateStatus(strUserName, "offline");
+    appendMessage(QStringLiteral("成功注销！"));
+    Sleep(2000);
+    qApp->exit();
+}
+
+
+bool UserWidget::appendMessage(const QString &message)
+{
+    m_UI->textEditOutput->append("\n" + message);
+    return true;
+}
+
+bool UserWidget::completeMatch()
+{
+    m_UI->pushButtonStartOrCancle->setEnabled(true);
+    m_UI->pushButtonStartOrCancle->setText(QStringLiteral("挑战"));
+    m_UI->labelTotalScore->setText(QStringLiteral("你的总积分是：")
+                                   + QString::number(CTYDb::getInstance()->getScoreByUser(strUserName)));
+    return true;
 }

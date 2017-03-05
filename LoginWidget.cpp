@@ -1,11 +1,12 @@
 #include "LoginWidget.h"
 #include <QTextStream>
 #include <QFile>
+#include <QFont>
 #include "Log.h"
 #include "CTYDb.h"
 
 #include <QKeyEvent>
-#include <QDebug>
+#include <qDebug>
 #include <QTextCodec>
 
 LoginWidget::LoginWidget(QWidget *parent)
@@ -42,6 +43,13 @@ LoginWidget::LoginWidget(QWidget *parent)
     mainLayout->addLayout(topLayout);
     mainLayout->addLayout(midLayout);
     mainLayout->addLayout(bottomLayout);
+
+    QFont serifFont("黑体", 11, QFont::Bold);
+    labelUserName->setFont(serifFont);
+    labelPassword->setFont(serifFont);
+    lineEditUserName->setFont(serifFont);
+    buttonLogin->setFont(serifFont);
+    buttonCancle->setFont(serifFont);
 
     setLayout(mainLayout);
 

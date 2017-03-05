@@ -31,6 +31,7 @@ struct MatchPair
     {
 
     }
+
     int index;
     QString first;
     QString second;

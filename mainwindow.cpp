@@ -6,13 +6,14 @@
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
     , m_loginWidget(new LoginWidget)
-    , m_userWidget(new UserWidget(""))
+    /*, m_userWidget(new UserWidget(""))*/
     , m_problemWidget(new ProblemWidget)
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
     setWindowTitle(QString::fromLocal8Bit("ChallengeToYou"));
     setWindowIcon(QIcon(QString::fromLocal8Bit(":/resources/image/icon.ico")));
+    //setWindowFlags(Qt::FramelessWindowHint);
 
     //m_loginWidget->resize(size());
     widgetBlank = new QWidget();
@@ -43,6 +44,7 @@ void MainWindow::slotLoginSucceed()
     const QString strUserName = m_loginWidget->getUserName();
     //delete m_loginWidget;
     mainLayout->removeWidget(m_loginWidget);
+    delete m_loginWidget;
     //delete widgetBlank;
     //delete mainLayout;
     //delete m_userWidget;
@@ -86,7 +88,7 @@ void MainWindow::slotStartContest()
     m_problemWidget->setFixedWidth(this->width() - m_userWidget->width() - 100);
     m_problemWidget->setProblems(CTYDb::getInstance()->getMatchPair(strUserName).problems);
     //m_userWidget = new UserWidget(strUserName);
-    m_userWidget->setLabelStatus(QStringLiteral("匹配到对手，将在5S后开始答题！"), true);
+    m_userWidget->appendMessage(QStringLiteral("匹配到对手，开始答题！"));
 
     delete mainLayout;
     QHBoxLayout *layout = new QHBoxLayout();
@@ -102,6 +104,7 @@ void MainWindow::slotStartContest()
 
 void MainWindow::slotCommitProblems(int score)
 {
+    m_userWidget->appendMessage(QStringLiteral("已提交给系统，正在处理..."));
     CTYDb::getInstance()->commitByUser(m_userWidget->getUserName(), score);
 }
 
@@ -136,9 +139,13 @@ void MainWindow::slotContestDone()
         {
             result = QStringLiteral("(*@ο@*) 哇～， 你赢得了比赛，总积分+1");
         }
-        else
+        else if(pair.first_score < pair.second_score)
         {
             result = QStringLiteral("o(╯□╰)o，你输了比赛");
+        }
+        else
+        {
+            result = QStringLiteral("┑(￣Д ￣)┍，你们实力接近，分不出胜负");
         }
     }
     else
@@ -146,12 +153,17 @@ void MainWindow::slotContestDone()
         if(pair.first_score > pair.second_score)
         {
             result = QStringLiteral("o(╯□╰)o，你输了比赛");
-
         }
-        else
+        else if(pair.first_score < pair.second_score)
         {
             result = QStringLiteral("(*@ο@*) 哇～， 你赢得了比赛，总积分+1");
         }
+        else
+        {
+
+            result = QStringLiteral("┑(￣Д ￣)┍，你们实力接近，分不出胜负");
+        }
     }
-    m_userWidget->setLabelStatus(result);
+    m_userWidget->appendMessage(result);
+    m_userWidget->completeMatch();
 }

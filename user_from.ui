@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>UserForm</class>
+ <widget class="QWidget" name="UserForm">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>442</width>
     <height>800</height>
    </rect>
   </property>
@@ -16,22 +16,44 @@
   <property name="styleSheet">
    <string notr="true">border:none</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>150</y>
-     <width>281</width>
-     <height>351</height>
+     <x>31</x>
+     <y>60</y>
+     <width>258</width>
+     <height>571</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>黑体</family>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>20</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>欢迎：</string>
         </property>
        </widget>
       </item>
@@ -39,6 +61,10 @@
        <widget class="QPushButton" name="pushButtonLogout">
         <property name="font">
          <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
           <underline>true</underline>
          </font>
         </property>
@@ -50,47 +76,57 @@
      </layout>
     </item>
     <item>
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
      <widget class="QLabel" name="labelTotalScore">
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>得分总计：</string>
       </property>
      </widget>
     </item>
     <item>
-     <spacer name="verticalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+     <widget class="QPushButton" name="pushButtonStartOrCancle">
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
+      <property name="text">
+       <string>挑战</string>
       </property>
-     </spacer>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="labelOutput">
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>消息列表：</string>
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QTextEdit" name="textEditOutput"/>
+    </item>
    </layout>
   </widget>
+  <zorder>layoutWidget</zorder>
+  <zorder>textEditOutput</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_UserWidget_t {
-    QByteArrayData data[6];
-    char stringdata0[72];
+    QByteArrayData data[7];
+    char stringdata0[83];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,11 +34,13 @@ QT_MOC_LITERAL(1, 11, 11), // "signalStart"
 QT_MOC_LITERAL(2, 23, 0), // ""
 QT_MOC_LITERAL(3, 24, 16), // "slotClickedStart"
 QT_MOC_LITERAL(4, 41, 16), // "slotMatchSuccess"
-QT_MOC_LITERAL(5, 58, 13) // "slotMatchFail"
+QT_MOC_LITERAL(5, 58, 13), // "slotMatchFail"
+QT_MOC_LITERAL(6, 72, 10) // "slotLogout"
 
     },
     "UserWidget\0signalStart\0\0slotClickedStart\0"
-    "slotMatchSuccess\0slotMatchFail"
+    "slotMatchSuccess\0slotMatchFail\0"
+    "slotLogout"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,7 +50,7 @@ static const uint qt_meta_data_UserWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -56,12 +58,13 @@ static const uint qt_meta_data_UserWidget[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x06 /* Public */,
+       1,    0,   39,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   35,    2, 0x08 /* Private */,
-       4,    1,   36,    2, 0x08 /* Private */,
-       5,    1,   39,    2, 0x08 /* Private */,
+       3,    0,   40,    2, 0x08 /* Private */,
+       4,    1,   41,    2, 0x08 /* Private */,
+       5,    1,   44,    2, 0x08 /* Private */,
+       6,    0,   47,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -70,6 +73,7 @@ static const uint qt_meta_data_UserWidget[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -84,6 +88,7 @@ void UserWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->slotClickedStart(); break;
         case 2: _t->slotMatchSuccess((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 3: _t->slotMatchFail((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 4: _t->slotLogout(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -124,13 +129,13 @@ int UserWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
