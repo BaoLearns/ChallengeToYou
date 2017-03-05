@@ -5,7 +5,7 @@
 #include "CTYDb.h"
 
 #include <QKeyEvent>
-#include <qDebug>
+#include <QDebug>
 #include <QTextCodec>
 
 LoginWidget::LoginWidget(QWidget *parent)
