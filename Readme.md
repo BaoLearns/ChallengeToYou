@@ -26,7 +26,6 @@ github 地址：[https://github.com/BaoLearns/ChallengeToYou](https://github.com
 ```
 ├── ChallengeToYou.pro
 ├── ChallengeToYou.pro.user
-├── ChallengeToYou.pro.user.9a653e1
 ├── Client.cpp
 ├── Client.h
 ├── CTYConfig.cpp
