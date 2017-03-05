@@ -1,0 +1,62 @@
+[2017-03-05 15::23::24::311]	Size:1
+[2017-03-05 15::23::31::833]	Size:2
+[2017-03-05 15::23::31::857]	Begin Match Contest.
+[2017-03-05 15::23::31::877]	End Match Contest.
+[2017-03-05 15::23::31::878]	Begin Match Contest.
+[2017-03-05 15::23::31::895]	End Match Contest.
+[2017-03-05 15::23::31::896]	Begin Match Contest.
+[2017-03-05 15::23::31::898]	End Match Contest.
+[2017-03-05 15::23::31::899]	Begin Match Contest.
+[2017-03-05 15::23::31::904]	End Match Contest.
+[2017-03-05 15::29::52::763]	Size:1
+[2017-03-05 15::30::04::121]	Size:2
+[2017-03-05 15::30::04::143]	Begin Match Contest.
+[2017-03-05 15::30::04::172]	End Match Contest.
+[2017-03-05 15::30::04::173]	Begin Match Contest.
+[2017-03-05 15::30::04::195]	End Match Contest.
+[2017-03-05 15::30::04::196]	Begin Match Contest.
+[2017-03-05 15::30::04::200]	End Match Contest.
+[2017-03-05 15::30::04::201]	Begin Match Contest.
+[2017-03-05 15::30::04::205]	End Match Contest.
+[2017-03-05 15::44::48::508]	Size:1
+[2017-03-05 15::44::56::871]	Size:1
+[2017-03-05 15::45::02::346]	Size:1
+[2017-03-05 15::45::40::839]	Size:1
+[2017-03-05 15::45::48::981]	Size:1
+[2017-03-05 15::47::35::489]	Size:1
+[2017-03-05 15::47::44::356]	Size:2
+[2017-03-05 15::47::44::384]	Begin Match Contest.
+[2017-03-05 15::47::44::407]	End Match Contest.
+[2017-03-05 15::47::44::408]	Begin Match Contest.
+[2017-03-05 15::47::44::422]	End Match Contest.
+[2017-03-05 15::47::44::423]	Begin Match Contest.
+[2017-03-05 15::47::44::425]	End Match Contest.
+[2017-03-05 15::47::44::426]	Begin Match Contest.
+[2017-03-05 15::47::44::429]	End Match Contest.
+[2017-03-05 15::50::19::653]	Size:1
+[2017-03-05 15::50::26::984]	Size:2
+[2017-03-05 15::50::27::010]	Begin Match Contest.
+[2017-03-05 15::50::27::035]	End Match Contest.
+[2017-03-05 15::50::27::036]	Begin Match Contest.
+[2017-03-05 15::50::27::049]	End Match Contest.
+[2017-03-05 15::50::27::049]	Begin Match Contest.
+[2017-03-05 15::50::27::051]	End Match Contest.
+[2017-03-05 15::50::27::052]	Begin Match Contest.
+[2017-03-05 15::50::27::054]	End Match Contest.
+[2017-03-05 15::55::04::613]	Size:1
+[2017-03-05 15::55::13::783]	Size:2
+[2017-03-05 15::55::13::817]	Begin Match Contest.
+[2017-03-05 15::55::13::839]	End Match Contest.
+[2017-03-05 15::55::13::840]	Begin Match Contest.
+[2017-03-05 15::55::13::856]	End Match Contest.
+[2017-03-05 15::55::13::856]	Begin Match Contest.
+[2017-03-05 15::55::44::903]	Size:1
+[2017-03-05 15::55::54::555]	Size:2
+[2017-03-05 15::55::54::581]	Begin Match Contest.
+[2017-03-05 15::55::54::604]	End Match Contest.
+[2017-03-05 15::55::54::605]	Begin Match Contest.
+[2017-03-05 15::55::54::621]	End Match Contest.
+[2017-03-05 15::55::54::622]	Begin Match Contest.
+[2017-03-05 15::55::54::625]	End Match Contest.
+[2017-03-05 15::55::54::626]	Begin Match Contest.
+[2017-03-05 15::55::54::628]	End Match Contest.
