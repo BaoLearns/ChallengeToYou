@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../ChallengeToYou/ProblemWidget.h"
+#include "../ProblemWidget.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ProblemWidget_t {
-    QByteArrayData data[7];
-    char stringdata0[98];
+    QByteArrayData data[8];
+    char stringdata0[114];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,12 +35,14 @@ QT_MOC_LITERAL(2, 27, 0), // ""
 QT_MOC_LITERAL(3, 28, 19), // "slotClickedPrevious"
 QT_MOC_LITERAL(4, 48, 15), // "slotClickedNext"
 QT_MOC_LITERAL(5, 64, 17), // "slotClickedCommit"
-QT_MOC_LITERAL(6, 82, 15) // "slotTimerUpDate"
+QT_MOC_LITERAL(6, 82, 15), // "slotTimerUpDate"
+QT_MOC_LITERAL(7, 98, 15) // "slotUpdateScore"
 
     },
     "ProblemWidget\0signalCommit\0\0"
     "slotClickedPrevious\0slotClickedNext\0"
-    "slotClickedCommit\0slotTimerUpDate"
+    "slotClickedCommit\0slotTimerUpDate\0"
+    "slotUpdateScore"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,7 +52,7 @@ static const uint qt_meta_data_ProblemWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -58,13 +60,14 @@ static const uint qt_meta_data_ProblemWidget[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   39,    2, 0x06 /* Public */,
+       1,    1,   44,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   42,    2, 0x0a /* Public */,
-       4,    0,   43,    2, 0x0a /* Public */,
-       5,    0,   44,    2, 0x0a /* Public */,
-       6,    0,   45,    2, 0x0a /* Public */,
+       3,    0,   47,    2, 0x0a /* Public */,
+       4,    0,   48,    2, 0x0a /* Public */,
+       5,    0,   49,    2, 0x0a /* Public */,
+       6,    0,   50,    2, 0x0a /* Public */,
+       7,    2,   51,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
@@ -74,6 +77,7 @@ static const uint qt_meta_data_ProblemWidget[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
 
        0        // eod
 };
@@ -89,6 +93,7 @@ void ProblemWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 2: _t->slotClickedNext(); break;
         case 3: _t->slotClickedCommit(); break;
         case 4: _t->slotTimerUpDate(); break;
+        case 5: _t->slotUpdateScore((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -129,13 +134,13 @@ int ProblemWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 6)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

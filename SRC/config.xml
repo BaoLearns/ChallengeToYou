@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+	<Server>
+		<Ip>192.168.0.1</Ip>
+		<Port>3300</Port>
+	</Server>
+	<Datebase>
+		<Name>cty.sqlite</Name>
+	</Datebase>
+	<ProblemNum>
+		<Number>10</Number>
+	<ProblemNum>
+	<WaitingSecond>
+		<Seconds>15</Seconds>
+    </WaitingSecond>
+    <MaxContestingTime>600000</MaxContestingTime>
+    <Log>
+        <Path>Log.txt</Path>
+    </Log>
+</Config>

@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../ChallengeToYou/CTYDb.h"
+#include "../CTYDb.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CTYDb_t {
-    QByteArrayData data[5];
-    char stringdata0[60];
+    QByteArrayData data[6];
+    char stringdata0[78];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,11 +33,12 @@ QT_MOC_LITERAL(0, 0, 5), // "CTYDb"
 QT_MOC_LITERAL(1, 6, 18), // "signalMatchSuccess"
 QT_MOC_LITERAL(2, 25, 0), // ""
 QT_MOC_LITERAL(3, 26, 15), // "signalMatchFail"
-QT_MOC_LITERAL(4, 42, 17) // "signalContestDone"
+QT_MOC_LITERAL(4, 42, 17), // "signalContestDone"
+QT_MOC_LITERAL(5, 60, 17) // "signalUpdateScore"
 
     },
     "CTYDb\0signalMatchSuccess\0\0signalMatchFail\0"
-    "signalContestDone"
+    "signalContestDone\0signalUpdateScore"
 };
 #undef QT_MOC_LITERAL
 
@@ -47,22 +48,24 @@ static const uint qt_meta_data_CTYDb[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   29,    2, 0x06 /* Public */,
-       3,    1,   32,    2, 0x06 /* Public */,
-       4,    0,   35,    2, 0x06 /* Public */,
+       1,    1,   34,    2, 0x06 /* Public */,
+       3,    1,   37,    2, 0x06 /* Public */,
+       4,    0,   40,    2, 0x06 /* Public */,
+       5,    2,   41,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
 
        0        // eod
 };
@@ -76,6 +79,7 @@ void CTYDb::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 0: _t->signalMatchSuccess((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 1: _t->signalMatchFail((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 2: _t->signalContestDone(); break;
+        case 3: _t->signalUpdateScore((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -99,6 +103,13 @@ void CTYDb::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
             typedef void (CTYDb::*_t)();
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CTYDb::signalContestDone)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            typedef void (CTYDb::*_t)(const QString & , const QString & );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CTYDb::signalUpdateScore)) {
+                *result = 3;
                 return;
             }
         }
@@ -130,13 +141,13 @@ int CTYDb::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
@@ -159,5 +170,12 @@ void CTYDb::signalMatchFail(const QString & _t1)
 void CTYDb::signalContestDone()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, Q_NULLPTR);
+}
+
+// SIGNAL 3
+void CTYDb::signalUpdateScore(const QString & _t1, const QString & _t2)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_END_MOC_NAMESPACE

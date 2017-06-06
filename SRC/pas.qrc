@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/image/background.jpg</file>
+        <file>resources/image/icon.ico</file>
+        <file>resources/qss/style.qss</file>
+        <file>resources/image/background2.jpg</file>
+        <file>resources/image/background3.jpg</file>
+        <file>resources/qss/black.qss</file>
+        <file>resources/qss/coffee.qss</file>
+        <file>resources/qss/default.qss</file>
+        <file>resources/qss/pagefold.qss</file>
+    </qresource>
+</RCC>
